@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const sourceDir = './styles';
+const sourceDir = path.join(__dirname, './styles');
 const destDir = './project-dist';
 const bundler = [];
 
@@ -48,7 +48,7 @@ fs.mkdir(path.join(__dirname, destDir), { recursive: true }, (err) => {
 
 function writeBundle() {
   const fileName = 'bundle.css';
-  const fullPath = path.join(destDir, fileName);
+  const fullPath = path.join(__dirname, destDir, fileName);
   fs.writeFile(fullPath, bundler.join('\n'), 'utf-8', (err) => {
     if (err) {
       console.error('Writing error:', err);
