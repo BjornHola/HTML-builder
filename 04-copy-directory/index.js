@@ -11,12 +11,12 @@ fs.mkdir(path.join(__dirname, destFolder), { recursive: true }, (err) => {
   }
   console.log('Directory created successfully!');
 
-  fs.readdir(sourceDir, (err, files) => {
+  fs.readdir(path.join(__dirname, sourceDir), (err, files) => {
     if (err) {
       return console.error('Reading error:', err);
     }
     files.forEach((file) => {
-      const srcPath = path.join(sourceDir, file);
+      const srcPath = path.join(path.join(__dirname, sourceDir), file);
       const destPath = path.join(__dirname, destFolder, file);
 
       fs.copyFile(srcPath, destPath, (err) => {
